@@ -2218,6 +2218,24 @@ extension NextLevel {
 
 extension NextLevel {
     
+    /// Returns the best capture session preset compatible for device
+    /// - Returns: the best preset
+    public func getHighestSupportedPreset() -> AVCaptureSession.Preset {
+        var preset = AVCaptureSession.Preset.high
+        if let session = self._captureSession {
+            
+            if session.canSetSessionPreset(AVCaptureSession.Preset.hd4K3840x2160) {
+                preset = .hd4K3840x2160
+            } else if session.canSetSessionPreset(AVCaptureSession.Preset.hd1920x1080) {
+                preset = .hd1920x1080
+            } else if session.canSetSessionPreset(AVCaptureSession.Preset.hd1280x720) {
+                preset = .hd1280x720
+            }
+        }
+        
+        return preset
+    }
+    
     /// Checks if video capture is supported by the hardware.
     public var isVideoCaptureSupported: Bool {
         get {
