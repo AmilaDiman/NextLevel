@@ -307,7 +307,6 @@ public class NextLevel: NSObject {
     public var devicePosition: NextLevelDevicePosition = .back {
         didSet {
             self.executeClosureAsyncOnSessionQueueIfNecessary {
-                self.configureSession()
                 self.configureSessionDevices()
                 self.updateVideoOrientation()
             }
