@@ -2220,7 +2220,7 @@ extension NextLevel {
     
     /// Reurns the current active camera resolution
     /// - Returns: the resolution of active camera
-    private func getCaptureResolution() -> CGSize {
+    public func getCaptureResolution() -> CGSize {
         var resolution = CGSize(width: 0, height: 0)
         let portraitOrientation = self.deviceOrientation == .portrait
             || self.deviceOrientation == .portraitUpsideDown
